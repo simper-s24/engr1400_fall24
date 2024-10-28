@@ -5,37 +5,28 @@
 
 using namespace std;
 
+int d = 6;
+
+int foo(int a) {
+	int b = a;
+	static int c = 0;
+	c += b;
+	b *= 11;
+	d *= b;
+	return c;
+}
 
 
 
 int main() {
+	cout << "d: " << d << endl;
 
-
-	ifstream file;
-	ofstream output;
-
-	file.open("class.txt");
-	output.open("teacher.txt");
-
-	string name;
-
-	int i = 1;
-	//while (getline(file, name)) {
-	while (file >> name) {
-		
-		cout << "Person " << i << ": " << name << endl;
-
-		output << name << ", ";
-		i++;
-	}
-	output << endl << "End of file" << endl;
-
-	file.close();
-	output.close();
-
-	int list[] = {5,4,5,6,7,8,88778,87,5};
-
+	int num = foo(5); cout << "num: " << num << endl;
+	num = foo(5); cout << "num: " << num << endl;
+	num = foo(5); cout << "num: " << num << endl;
+	num = foo(5); cout << "num: " << num << endl;
 	
+	cout << "d: " << d << endl;
 
 }
 
