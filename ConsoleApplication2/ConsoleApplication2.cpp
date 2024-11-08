@@ -4,7 +4,23 @@
 #include <fstream>
 #include <vector>
 
+
 using namespace std;
+
+struct Point {
+	int x;
+	int y;
+};
+
+struct Point3d {
+	Point flat;
+	int z;
+};
+
+struct IntList {
+	int data[6];
+};
+
 
 int d = 6;
 
@@ -28,6 +44,18 @@ void printVector(vector<int> items) {
 
 int main() {
 
+	Point here = { 1,2 };
+	Point there;
+	there.x = 7;
+	there.y = 12;
+
+	Point3d space;
+	space.flat.x = 37;
+	space.z = 62;
+
+	vector<Point> points;
+	vector<string> names = { "Cooper", "Kenyon" };
+
 	int array[20] = { 4,5,6,45,65,12 };
 	vector<int> list = { 4,5,6,45,65,12 };
 
@@ -42,7 +70,7 @@ int main() {
 
 	printVector(list);
 	
-	int first = (list.size() > 0 ? list[0] : -1);
+	int first = (list.size() > 0 ? list.at(0) : -1);
 	
 	list.erase(list.begin() + 0);
 	printVector(list);
