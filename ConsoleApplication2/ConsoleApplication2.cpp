@@ -42,8 +42,19 @@ void printVector(vector<int> items) {
 }
 
 
+int bar(int list[][4][3]) {
+
+	return 0;
+}
+
+int myFunction() {  }
+
 int main() {
 
+	int num = 3.45;
+	int arr[][7] = { 3,4,5,6,5,5 };
+
+ 
 	Point here = { 1,2 };
 	Point there;
 	there.x = 7;
