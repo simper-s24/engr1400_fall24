@@ -23,7 +23,19 @@ int bar(vector<int>* pv) {
 	return sum;
 }
 
+void MemoryLeak() {
+	int size = 1000000;
+	int* ptr = nullptr;
+	for (int i = 0; i < size; i++)
+	{
+		ptr = new int[size];
+	}
+}
+
 int main() {
+
+	MemoryLeak();
+
 	vector<int> list;
 	vector<int>* ptr = nullptr;
 	ptr = &list;
