@@ -4,50 +4,38 @@
 #include <fstream>
 #include <vector>
 
-
 using namespace std;
+const int SIZE = 7;
 
-int foo(vector<int> list2) {
-	int sum = 0;
-	for (int i = 0; i < list2.size(); i++)
-		sum += list2[i];
-	cout << "list2 address: " << &list2  << endl;
-	return sum;
-}
-
-int bar(vector<int>* pv) {
-	int sum = 0;
-	cout << "*pv address: " << &pv << "; target address: " << pv << endl;
-	for (int i = 0; i < (*pv).size(); i++)
-		sum += (*pv)[i];
-	return sum;
-}
-
-void MemoryLeak() {
-	int size = 1000000;
-	int* ptr = nullptr;
+void printArray(int list[], int size) {
 	for (int i = 0; i < size; i++)
 	{
-		ptr = new int[size];
+		cout << list[i] << ", ";
 	}
+	cout << endl;
 }
 
 int main() {
 
-	MemoryLeak();
+	//int list[SIZE] = { 42, 87, 3, 14, -1, 105, 2 };
+	int list[SIZE] = { 105, -1, 2, 3, 14, 42, 87, };
 
-	vector<int> list;
-	vector<int>* ptr = nullptr;
-	ptr = &list;
+	cout << "0: ";
+	printArray(list, SIZE);
 
-	list.push_back(7);
-	list.push_back(73);
-	
-	cout << "list address: " << &list << endl;
-	cout << "*ptr address: " << &ptr << "; target address: " << ptr << endl;
-
-	foo(list);
-	bar(ptr);
+	for (int j = 0; j < SIZE; j++)
+	{
+		for (int i = 0; i < SIZE - j - 1; i++)
+		{
+			if (list[i] > list[i + 1]) {
+				int temp = list[i];
+				list[i] = list[i + 1];
+				list[i + 1] = temp;
+			}
+		}
+		cout << j << ": ";
+		printArray(list, SIZE);
+	}
 
 }
 
